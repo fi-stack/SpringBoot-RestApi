@@ -21,7 +21,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "products")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+// @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+// property = "id")
 public class Product implements Serializable {
 
     @Id
@@ -43,7 +44,7 @@ public class Product implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "products_suppliers", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "supplier_id"))
-    // @JsonManagedReference
+    @JsonManagedReference
     private Set<Supplier> suppliers;
 
     public Long getId() {
